@@ -28,7 +28,7 @@ const ping: Command = {
 
       const latency = Math.round(performance.now() - start);
 
-      await ctx.client.sendTextMessage(ctx.room.roomId, `latency to ${ctx.args[0] ? ctx.args[0] : 'imaretar.de'}: ${latency}ms`)
+      await ctx.client.sendTextMessage(ctx.room.roomId, `Latency to ${ctx.args[0] ? ctx.args[0] : 'imaretar.de'}: ${latency}ms`)
     } catch (error) {
       console.error('Homeserver ping failed:', error);
 
