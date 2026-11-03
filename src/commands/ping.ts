@@ -15,10 +15,6 @@ const ping: Command = {
       if (homeserver) {
         const url = new URL(homeserver);
 
-        if (url.protocol !== 'https:' && url.protocol !== 'http:') {
-          throw new Error('Invalid homeserver protocol');
-        }
-
         await fetch(`${url.origin}/_matrix/client/v3/versions`, {
           signal: AbortSignal.timeout(10000),
         });

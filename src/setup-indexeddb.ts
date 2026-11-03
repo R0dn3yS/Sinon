@@ -1,4 +1,4 @@
-import dbManager from "node-indexeddb/dbManager";
+import dbManager from 'node-indexeddb/dbManager';
 
 export async function setupIndexedDB(): Promise<void> {
   console.log('Loading persistent IndexedDB cache...');

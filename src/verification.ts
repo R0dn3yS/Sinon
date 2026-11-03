@@ -43,9 +43,9 @@ async function handleVerification(request: VerificationRequest): Promise<void> {
     verifier.on(VerifierEvent.ShowSas, async (data) => {
       const { sas, confirm, mismatch, cancel } = data;
 
-      console.log("\n================================");
+      console.log('\n================================');
       console.log(`Verification with ${userId}`);
-      console.log("================================");
+      console.log('================================');
 
       if (!sas.emoji) {
         console.log('Emoji verification was not negotiated.');
@@ -59,7 +59,7 @@ async function handleVerification(request: VerificationRequest): Promise<void> {
         console.log(`${item[0]} ${item[1]}`);
       }
 
-      console.log("\n================================");
+      console.log('\n================================');
 
       const answer = await rl.question('Do all seven emoji match? [y/N]');
 
