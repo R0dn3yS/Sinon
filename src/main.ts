@@ -12,6 +12,7 @@ const userId = process.env.MATRIX_USER_ID!;
 const accessToken = process.env.MATRIX_ACCESS_TOKEN!;
 const deviceId = process.env.MATRIX_DEVICE_ID!;
 const cryptoPassword = process.env.MATRIX_CRYPTO_PASSWORD!;
+const prefix = process.env.PREFIX!;
 
 await setupIndexedDB();
 
@@ -42,7 +43,7 @@ await client.initRustCrypto({
 
 setupVerification(client);
 
-const commandHandler = new CommandHandler(client, '$');
+const commandHandler = new CommandHandler(client, prefix);
 await commandHandler.loadCommands();
 
 setupMessageHandler(client, commandHandler);
