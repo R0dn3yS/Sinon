@@ -1,0 +1,19 @@
+{
+  "nane": "sinon",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/main.ts",
+    "dev": "tsx watch src/main.ts"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "matrix-js-sdk": "^45.0.0",
+    "node-indexeddb": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
