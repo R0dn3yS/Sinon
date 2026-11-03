@@ -25,10 +25,6 @@ export function setupMessageHandler(client: MatrixClient) {
 
       const content = decryptedEvent.getContent();
 
-      console.log(
-        `[${room.name}] ${decryptedEvent.getSender()}: ${content.body}`,
-      );
-
       if (content.body === '!ping') {
         client.sendTextMessage(room.roomId, 'Pong!');
       }
