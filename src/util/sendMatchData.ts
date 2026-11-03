@@ -11,7 +11,7 @@ export async function sendMatchData(client: MatrixClient, room: Room, matchData:
   const imageUrl = await getMxcUrl(client, `https://api.mcheads.org/head/${winner.nickname}/256`);
 
   const html = `<h3><b>${matchData.players[0].nickname} vs ${matchData.players[1].nickname}</b></h3>
-    <b>Winner:</b> <img data-mx-emoticon height="32" src="${imageUrl}" alt="${winner.nickname}" title="${winner.nickname}"> ${winner.nickname}<br/>
+    <b>Winner:</b> <img data-mx-emoticon height="16" src="${imageUrl}" alt="${winner.nickname}" title="${winner.nickname}"> ${winner.nickname}<br/>
     <b>Time:</b> ${miliToMinutes(matchData.result.time)}<br/>
     <b>Seed type:</b> ${matchData.seed?.overworld}<br/>
     <b>Nether:</b> ${matchData.seed?.nether}

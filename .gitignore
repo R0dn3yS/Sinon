@@ -1,4 +1,5 @@
 .env
+mxc.json
 node_modules/
 indexeddb/
 cache/
