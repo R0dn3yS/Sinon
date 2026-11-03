@@ -70,8 +70,6 @@ setInterval(async () => {
     const currentTimeStamp = Math.floor(Temporal.Now.instant().epochMilliseconds / 1000);
     const matchData = (await mcsrClient.getUserMatches(player, { sort: 'newest' }))[0];
 
-    console.log(matchData);
-
     if (!matchData || matchData.forfeited) continue;
 
     if (matchIDs.includes(matchData.id)) continue;
