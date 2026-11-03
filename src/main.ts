@@ -1,8 +1,9 @@
-import { ClientEvent, createClient } from 'matrix-js-sdk';
+import { ClientEvent, createClient, RoomEvent } from 'matrix-js-sdk';
 import { setupIndexedDB } from './setup-indexeddb.ts';
 import { config } from 'dotenv';
 import { setupVerification } from './verification.ts';
 import { setupMessageHandler } from './message.ts';
+import { CommandHandler } from './handlers/CommandHandler.ts';
 
 config();
 
@@ -41,7 +42,10 @@ await client.initRustCrypto({
 
 setupVerification(client);
 
-setupMessageHandler(client);
+const commandHandler = new CommandHandler(client, '!');
+await commandHandler.loadCommands();
+
+setupMessageHandler(client, commandHandler);
 
 client.on(ClientEvent.Sync, (state) => {
   if (state === 'PREPARED') {

@@ -1,6 +1,7 @@
 import { ClientEvent, MatrixClient, MatrixEvent, MatrixEventEvent, Room, RoomEvent, SyncState } from 'matrix-js-sdk';
+import { CommandHandler } from './handlers/CommandHandler.ts';
 
-export function setupMessageHandler(client: MatrixClient) {
+export function setupMessageHandler(client: MatrixClient, commandHandler: CommandHandler) {
   let initialSyncComplete = false;
 
   const processedEvents = new WeakSet<MatrixEvent>();
@@ -17,21 +18,12 @@ export function setupMessageHandler(client: MatrixClient) {
 
     processedEvents.add(event);
 
-    const process = (decryptedEvent: MatrixEvent, room: Room, client: MatrixClient) => {
-      if (!processedEvents.has(event)) return;
-
-      if (decryptedEvent.getType() !== 'm.room.message') return;
-      if (decryptedEvent.getSender() === client.getUserId()) return;
-
-      const content = decryptedEvent.getContent();
-
-      if (content.body === '!ping') {
-        client.sendTextMessage(room.roomId, 'Pong!');
-      }
+    const process = (decryptedEvent: MatrixEvent, room: Room, commandHandler: CommandHandler) => {
+      commandHandler.handleMessage(decryptedEvent, room)
     }
 
     if (event.getType() === 'm.room.message') {
-      process(event, room, client);
+      process(event, room, commandHandler);
       return;
     }
 
@@ -43,7 +35,7 @@ export function setupMessageHandler(client: MatrixClient) {
         return;
       }
 
-      process(decryptedEvent, room, client);
+      process(decryptedEvent, room, commandHandler);
     });
   });
 }
