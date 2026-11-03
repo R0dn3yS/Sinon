@@ -60,6 +60,9 @@ export class CommandHandler {
     const command = this.commands.get(name.toLowerCase());
 
     if (!command) return;
+    
+    if (command.ownerOnly && event.getSender() !== '@rodney:imaretar.de') return console.log('No Owner');
+    if (command.adminOnly && room.getMember(event.getSender()!)?.powerLevel! < 50) return console.log('No Admin');
 
     const context: CommandContext = {
       client: this.client,

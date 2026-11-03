@@ -8,3 +8,5 @@ const ping: Command = {
     await ctx.client.sendTextMessage(ctx.room.roomId, 'Pong!');
   }
 }
+
+export default ping;

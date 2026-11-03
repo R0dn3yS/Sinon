@@ -1,4 +1,4 @@
-import { ClientEvent, createClient, RoomEvent } from 'matrix-js-sdk';
+import { ClientEvent, createClient } from 'matrix-js-sdk';
 import { setupIndexedDB } from './setup-indexeddb.ts';
 import { config } from 'dotenv';
 import { setupVerification } from './verification.ts';
@@ -42,7 +42,7 @@ await client.initRustCrypto({
 
 setupVerification(client);
 
-const commandHandler = new CommandHandler(client, '!');
+const commandHandler = new CommandHandler(client, '$');
 await commandHandler.loadCommands();
 
 setupMessageHandler(client, commandHandler);

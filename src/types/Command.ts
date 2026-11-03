@@ -12,6 +12,8 @@ export interface Command {
   name: string;
   aliases?: string[];
   description?: string;
+  adminOnly?: boolean;
+  ownerOnly?: boolean;
 
   execute(ctx: CommandContext): Promise<void>;
 }
