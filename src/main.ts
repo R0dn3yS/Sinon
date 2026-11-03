@@ -59,7 +59,7 @@ client.on(ClientEvent.Sync, (state) => {
 console.log('Starting Matrix Sync...');
 
 setInterval(async () => {
-  const players = [ 'R0dn3yS', 'Aqua_Hoshino', 'Feinberg' ];
+  const players = [ 'R0dn3yS', 'Aqua_Hoshino' ];
 
   const mcsrRoom = client.getRoom('!0v3XC2bLZW-uH2YN916ikmLyoqxHhlkL-1EtY7bdzRU')!;
   const mcsrClient = new McsrClient();
